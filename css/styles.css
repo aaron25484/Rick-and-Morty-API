@@ -1,8 +1,10 @@
-#mainArea {
-    background-image: url(/assets/img/background-main.png);
-    background-attachment: fixed;
+body{
+    height: 90vh;
 }
 
 #footer {
     background-image: url(/assets/img/header-footer.jpg);
+    padding: 1%;
 }
+
+
