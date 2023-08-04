@@ -1,0 +1,8 @@
+#mainArea {
+    background-image: url(/assets/img/background-main.png);
+    background-attachment: fixed;
+}
+
+#footer {
+    background-image: url(/assets/img/header-footer.jpg);
+}
