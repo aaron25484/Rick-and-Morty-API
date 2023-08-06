@@ -2,9 +2,22 @@ body{
     height: 90vh;
 }
 
+#episodeList{
+    position: fixed;
+    overflow-y: scroll;
+    list-style: none;
+}
+
+#episodeName, #episodeDate, #episodeCode{
+    color: chartreuse;
+}
+
 #footer {
     background-image: url(/assets/img/header-footer.jpg);
     padding: 1%;
+    border: 2px solid red;
+    bottom: 0;
+    position: absolute;
 }
 
 

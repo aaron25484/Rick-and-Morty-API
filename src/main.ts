@@ -9,7 +9,7 @@ async function init(){
     episodes.forEach((episode) =>{
         const episodeCard = document.createElement("li");
         const episodeCardTitle = document.createElement("h6");
-        const episodeCardTitleText = document.createTextNode(episode.name)
+        const episodeCardTitleText = document.createTextNode(`Episode ${episode.id}`)
         episodeCardTitle.appendChild(episodeCardTitleText);
         
         

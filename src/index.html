@@ -13,6 +13,7 @@
 </head>
 <body>
     <div class="container-fluid">
+<!---------------------------------------HEADER----------------------------------------------->
         <div class="row">
             <div class="col-md-12">
                 <div class="page-header d-flex">
@@ -22,37 +23,15 @@
             </div>
         </div>
         <div class="row">
+<!---------------------------------------EPISODE LIST---------------------------------------->
             <div class="col-md-2">
                 <ul id="episodeList">
-                    <li class="list-item">
-                        Lorem ipsum dolor sit amet
-                    </li>
-                    <li class="list-item">
-                        Consectetur adipiscing elit
-                    </li>
-                    <li class="list-item">
-                        Integer molestie lorem at massa
-                    </li>
-                    <li class="list-item">
-                        Facilisis in pretium nisl aliquet
-                    </li>
-                    <li class="list-item">
-                        Nulla volutpat aliquam velit
-                    </li>
-                    <li class="list-item">
-                        Faucibus porta lacus fringilla vel
-                    </li>
-                    <li class="list-item">
-                        Aenean sit amet erat nunc
-                    </li>
-                    <li class="list-item">
-                        Eget porttitor lorem
-                    </li>
                 </ul> 
                 <button type="button" class="btn btn-primary active">
-                    Button
+                    Load More
                 </button>
             </div>
+<!---------------------------------------MAIN AREA---------------------------------------->
             <div class="col-md-10" id="mainArea" style="background-color: black;">
                 <div class="bg-animation">
                     <div id="stars"></div>
@@ -60,20 +39,76 @@
                     <div id="stars3"></div>
                     <div id="stars4"></div>
                 </div>
-                <img alt="Bootstrap Image Preview" src="https://www.layoutit.com/img/sports-q-c-140-140-3.jpg" />
-                <h3>
-                    de los Santos
-                </h3>
-                <p>
-                    Lorem ipsum dolor sit amet, <strong>consectetur adipiscing elit</strong>. Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. <em>Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.</em> Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. <small>Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.</small>
-                </p>
+                <div class="container mt-3">
+                    <div id="mainCard">
+                        <h5 id="episodeName">EPISODE NAME</h5>
+                        <p id="episodeDate">AIR DATE</p>
+                        <p id="episodeCode">EPISODE CODE</p>
+
+                        <div id="roW" class="row">
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card card-block">       
+                                <img src="assets/Pink-Floyd13.jpg" alt="Photo of sunset">
+                                <h5 class="card-title mt-3 mb-3"></h5>
+                                <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p> 
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card card-block">        
+                                <img src="assets/Pink-Floyd13.jpg" alt="Photo of sunset">
+                                <h5 class="card-title mt-3 mb-3">ProVyuh</h5>
+                                <p class="card-text">This is a company that builds websites, web .</p> 
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card card-block">        
+                                <img src="assets/Pink-Floyd13.jpg" alt="Photo of sunset">
+                                <h5 class="card-title mt-3 mb-3">ProVyuh</h5>
+                                <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p> 
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6">
+                                <div class="card card-block">       
+                                <img src="assets/Pink-Floyd13.jpg" alt="Photo of sunset">
+                                <h5 class="card-title mt-3 mb-3">ProVyuh</h5>
+                                <p class="card-text">This is a company that builds websites, web apps and e-commerce solutions.</p> 
+                                </div>
+                            </div>    
+                        </div> 
+                    </div>    
+                </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12" id="footer">
-                <h3 class="text-center">
-                    h3. Lorem ipsum dolor sit amet.
-                </h3>
+    </div>
+<!--------------------------------------MODAL-------------------------------------------->
+
+    
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                <p id="vamo"></p>
+                </div>
+                <div class="user">
+                <h5>USER</h5>
+                <h6 id="userName"></h6>
+                <h5>EMAIL</h5>
+                <h6 id="userEmail"></h6>
+                </div>
+                <div class="commentList">
+                <h6 id="commentName"></h6>
+                <p id="commentBody"></p>
+                <p id="commentMail"></p>
+                </div>
+                <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" id="commentLoader" class="btn btn-primary">Load Comments</button>
+                </div>
             </div>
         </div>
     </div>
