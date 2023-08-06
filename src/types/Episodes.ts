@@ -4,6 +4,6 @@ interface Episode {
     type: string;
     dimension: string;
     residents: string [];
-    url: string,
+    url: string;
     created: string;
 }
