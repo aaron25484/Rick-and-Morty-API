@@ -24,3 +24,12 @@ export function getCharacters() {
         return data.results;
     });
 }
+const urlLocations = `${url}/location`;
+export function getLocations() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const response = yield fetch(urlLocations);
+        const data = yield response.json();
+        return data.results;
+    });
+}
+// ${url}/episode?page=(i+1)

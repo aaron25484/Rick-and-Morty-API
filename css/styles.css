@@ -20,4 +20,14 @@ body{
     position: absolute;
 }
 
+.bg-animation{
+    z-index: -1;
+}
 
+/* 
+funcion ferran
+
+loadMoreBtn.addEventListener("click", function () {
+    page++;
+    fetchPosts();
+  }); */

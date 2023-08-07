@@ -14,14 +14,55 @@ function init() {
         const episodeList = document.querySelector("#episodeList");
         const episodes = yield getEpisodes();
         episodes.forEach((episode) => {
-            const episodeCard = document.createElement("li");
-            const episodeCardTitle = document.createElement("h6");
+            const episodeListItem = document.createElement("li");
+            const episodeListTitle = document.createElement("h6");
             const episodeCardTitleText = document.createTextNode(`Episode ${episode.id}`);
-            episodeCardTitle.appendChild(episodeCardTitleText);
-            episodeList === null || episodeList === void 0 ? void 0 : episodeList.appendChild(episodeCard);
-            episodeCard.appendChild(episodeCardTitle);
-            // console.log(episode)
+            episodeListTitle.appendChild(episodeCardTitleText);
+            episodeList === null || episodeList === void 0 ? void 0 : episodeList.appendChild(episodeListItem);
+            episodeListItem.appendChild(episodeListTitle);
+            episodeListItem.addEventListener('click', showCharacters);
+            function showCharacters() {
+                const displayMain = document.querySelector("#mainCard");
+                const episodeCardName = document.querySelector("#episodeName");
+                episodeCardName.textContent = episode.name;
+                const episodeCardDate = document.querySelector("#episodeDate");
+                episodeCardDate.textContent = episode.airDate;
+                const episodeCode = document.querySelector("#episodeCode");
+                episodeCode.textContent = episode.episode;
+                const episodeCharacters = episode.characters;
+                episodeCharacters.forEach(char => {
+                    const fetchChar = fetch(char);
+                    printChar();
+                    console.log(printChar);
+                    function printChar() {
+                        return __awaiter(this, void 0, void 0, function* () {
+                            const result = yield fetchChar;
+                            const data = yield result.json();
+                            console.log(data);
+                            if (displayMain) {
+                                const cardRow = document.querySelector("#roW");
+                                const cardScheme = document.createElement("div");
+                                cardScheme.className = "col-md-3 col-sm-6";
+                                const mainCards = document.createElement("div");
+                                mainCards.className = "card card-block";
+                                let characterImg = document.createElement("img");
+                                characterImg.src = data.image;
+                                const characterName = document.createElement("h5");
+                                characterName.className = "card-title mt-3 mb-3";
+                                characterName.textContent = data.name;
+                                const characterBody = document.createElement("p");
+                                characterBody.className = ".card-text";
+                                characterBody.textContent = data.status + "---" + data.species;
+                                cardRow === null || cardRow === void 0 ? void 0 : cardRow.appendChild(cardScheme);
+                                cardScheme === null || cardScheme === void 0 ? void 0 : cardScheme.appendChild(mainCards);
+                                mainCards === null || mainCards === void 0 ? void 0 : mainCards.appendChild(characterImg);
+                                mainCards === null || mainCards === void 0 ? void 0 : mainCards.appendChild(characterName);
+                                mainCards === null || mainCards === void 0 ? void 0 : mainCards.appendChild(characterBody);
+                            }
+                        });
+                    }
+                });
+            }
         });
-        // console.log(episodes);
     });
 }

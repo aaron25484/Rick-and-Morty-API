@@ -15,3 +15,15 @@ export async function getCharacters(): Promise<Character[]> {
     const data = await response.json();
     return data.results;
 }
+
+const urlLocations = `${url}/location`;
+
+export async function getLocations(): Promise<Location[]> {
+    const response = await fetch(urlLocations);
+    const data = await response.json();
+    return data.results;
+}
+
+
+
+// ${url}/episode?page=(i+1)
