@@ -2,7 +2,7 @@ interface Episode {
     id: number;
     name: string;
     type: string;
-    airDate: string;
+    air_date: string;
     episode: string;
     characters: string []
     url: string;
