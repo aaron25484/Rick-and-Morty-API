@@ -8,10 +8,12 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 const url = "https://rickandmortyapi.com/api";
-const urlEpisodes = `${url}/episode`;
+let page = 1;
+import { init } from "../main.js";
+export const urlEpisodes = `${url}/episode`;
 export function getEpisodes() {
     return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch(urlEpisodes);
+        const response = yield fetch(urlEpisodes + `?page=${page}`);
         const data = yield response.json();
         return data.results;
     });
@@ -32,4 +34,13 @@ export function getLocations() {
         return data.results;
     });
 }
-// ${url}/episode?page=(i+1)
+const loadEpisodesButton = document.querySelector("#loadButton");
+loadEpisodesButton === null || loadEpisodesButton === void 0 ? void 0 : loadEpisodesButton.addEventListener('click', loadEpisodes);
+function loadEpisodes() {
+    return __awaiter(this, void 0, void 0, function* () {
+        page++;
+        console.log(page);
+        getEpisodes();
+        init();
+    });
+}

@@ -2,11 +2,17 @@ body{
     height: 90vh;
 }
 
-#episodeList{
+#header{
+    position:static;
+    top:0;
+    left: 0;
+}
+
+/* #episodeList{
     position: fixed;
     overflow-y: scroll;
     list-style: none;
-}
+} */
 
 #episodeName, #episodeDate, #episodeCode{
     color: chartreuse;

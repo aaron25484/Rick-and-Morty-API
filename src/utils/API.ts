@@ -1,9 +1,13 @@
 const url = "https://rickandmortyapi.com/api";
 
-const urlEpisodes = `${url}/episode`;
+let page = 1;
+
+import {init} from "../main.js"
+
+export const urlEpisodes = `${url}/episode`;
 
 export async function getEpisodes(): Promise<Episode[]>{
-    const response = await fetch(urlEpisodes);
+    const response = await fetch(urlEpisodes + `?page=${page}`);
     const data = await response.json();
     return data.results;
 }
@@ -24,6 +28,15 @@ export async function getLocations(): Promise<Location[]> {
     return data.results;
 }
 
+const loadEpisodesButton = document.querySelector("#loadButton");
 
+loadEpisodesButton?.addEventListener('click', loadEpisodes)
 
-// ${url}/episode?page=(i+1)
+async function loadEpisodes(){
+    
+    page++;
+    console.log(page)
+    getEpisodes();
+    init();
+    
+}
