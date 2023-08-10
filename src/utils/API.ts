@@ -36,4 +36,8 @@ async function loadEpisodes(){
     page++;
     getEpisodes();
     init();
+
+    if(page > 3){
+        loadEpisodesButton?.remove();
+    }
 }

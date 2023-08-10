@@ -16,6 +16,7 @@ export function init() {
         episodes.forEach((episode) => {
             const episodeListItem = document.createElement("li");
             const episodeListTitle = document.createElement("h6");
+            episodeListTitle.className = "episode-list-title";
             const episodeCardTitleText = document.createTextNode(`Episode ${episode.id}`);
             episodeListTitle.appendChild(episodeCardTitleText);
             episodeList === null || episodeList === void 0 ? void 0 : episodeList.appendChild(episodeListItem);
@@ -51,17 +52,18 @@ function showCharacters(episode) {
                     const result = yield fetchCharacter;
                     const data = yield result.json();
                     const cardScheme = document.createElement("div");
-                    cardScheme.className = "col-md-3 col-sm-6";
+                    cardScheme.className = "col-lg-2 col-md-3 col-sm-6";
                     const mainCards = document.createElement("div");
                     mainCards.replaceChildren();
                     mainCards.className = "card card-block mb-3";
                     let characterImg = document.createElement("img");
+                    characterImg.className = "card-img";
                     characterImg.src = data.image;
                     const characterName = document.createElement("h5");
                     characterName.className = "card-title mt-3 mb-3";
                     characterName.textContent = data.name;
                     const characterBody = document.createElement("p");
-                    characterBody.className = ".card-text";
+                    characterBody.className = "card-text";
                     characterBody.textContent = data.status + " // " + data.species;
                     cardRow === null || cardRow === void 0 ? void 0 : cardRow.appendChild(cardScheme);
                     cardScheme === null || cardScheme === void 0 ? void 0 : cardScheme.appendChild(mainCards);
@@ -78,11 +80,12 @@ function showCharacters(episode) {
 }
 const modal = document.querySelector("#myModal");
 function openModal(data) {
-    modal.style.display = "block";
-    modal.style.opacity = "1";
+    modal.style.display = "flex";
+    modal.classList.add("modal-show");
     let modalContent = document.querySelector("#modalContent");
     let modalCardImg = document.createElement("img");
     modalCardImg.src = data.image;
+    modalCardImg.className = "modal-card-img";
     let modalCardName = document.createElement("h5");
     modalCardName.setAttribute("id", "modalCardName");
     modalCardName.textContent = data.name;
@@ -99,8 +102,8 @@ function openModal(data) {
     modalCardOrigin === null || modalCardOrigin === void 0 ? void 0 : modalCardOrigin.setAttribute("id", "modalCardOrigin");
     modalCardOrigin.textContent = "Origin:" + " " + data.origin.name;
     let modalCardEpiList = document.createElement("ul");
+    modalCardEpiList.className = "modal-card-epi-list";
     modalCardEpiList.textContent = "Appears in Episodes:";
-    // modalContent?.appendChild(modalClose);
     modalContent === null || modalContent === void 0 ? void 0 : modalContent.appendChild(modalCardImg);
     modalContent === null || modalContent === void 0 ? void 0 : modalContent.appendChild(modalCardName);
     modalContent === null || modalContent === void 0 ? void 0 : modalContent.appendChild(modalCardStatus);
@@ -119,6 +122,7 @@ function openModal(data) {
                 const result = yield fetchEpisode;
                 const episode = yield result.json();
                 let episodeLi = document.createElement("li");
+                episodeLi.className = "modal-card-epi-list-item";
                 episodeLi.textContent = episode.episode + " - " + episode.name;
                 modalCardEpiList.appendChild(episodeLi);
                 episodeLi.addEventListener('click', () => {
@@ -133,10 +137,14 @@ function openModal(data) {
     });
 }
 function closeModal() {
-    modal.style.opacity = "0";
-    modal.style.display = "none";
-    let modalContent = document.querySelector("#modalContent");
-    modalContent === null || modalContent === void 0 ? void 0 : modalContent.replaceChildren();
+    modal.classList.remove("modal-show");
+    modal.classList.add("modal-hide");
+    setTimeout(() => {
+        modal.style.display = "none";
+        modal.classList.remove("modal-hide");
+        let modalContent = document.querySelector("#modalContent");
+        modalContent === null || modalContent === void 0 ? void 0 : modalContent.replaceChildren();
+    }, 500);
 }
 function showOrigin(data) {
     const originCharacters = data.origin.url;
@@ -151,7 +159,11 @@ function showOrigin(data) {
         let locationDimension = document.createElement("li");
         locationDimension.textContent = location.dimension;
         let locationResidentsList = document.createElement("ul");
+        locationResidentsList.className = "resident-list";
         locationResidentsList.textContent = "List of Residents:";
+        locationList.appendChild(locationType);
+        locationList.appendChild(locationDimension);
+        locationList.appendChild(locationResidentsList);
         const locationResidents = location.residents;
         locationResidents.forEach((resident) => {
             const fetchResident = fetch(resident);
@@ -160,7 +172,9 @@ function showOrigin(data) {
                 return __awaiter(this, void 0, void 0, function* () {
                     const result = yield fetchResident;
                     const data = yield result.json();
+                    console.log(data);
                     let locationResidentsListItem = document.createElement("li");
+                    locationResidentsListItem.className = "resident-list-item";
                     locationResidentsListItem.textContent = data.name;
                     locationResidentsList.appendChild(locationResidentsListItem);
                     locationResidentsListItem.addEventListener('click', () => {
@@ -171,8 +185,5 @@ function showOrigin(data) {
                 });
             }
         });
-        locationList.appendChild(locationType);
-        locationList.appendChild(locationDimension);
-        locationList.appendChild(locationResidentsList);
     });
 }

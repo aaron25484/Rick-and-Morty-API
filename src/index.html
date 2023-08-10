@@ -8,6 +8,9 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/styles.css">
     <link rel="stylesheet" href="/css/background.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delicious+Handrawn&display=swap" rel="stylesheet">
     <script type="module" src="../dist/main.js"></script>
     <title>Rick  Morty</title>
 </head>
@@ -16,19 +19,18 @@
 <!---------------------------------------HEADER----------------------------------------------->
         <div class="row" id="header">
             <div class="col-md-12">
-                <div class="page-header d-flex">
-                    <img src="/assets/img/header-image.png" alt="">
-                    <h1>Rick  Morty</h1>
+                <div class="page-header d-grid">
+                    <!-- <img src="/assets/img/header-image.png" alt="Rick and Morty Logo"> -->
+                    <img class="header-img" src="/assets/img/header-img.png" alt="">
                 </div>
             </div>
         </div>
         <div class="row">
 <!---------------------------------------EPISODE LIST---------------------------------------->
             <div class="col-md-2">
-                <ul id="episodeList">
-                    
-                </ul> 
-            <button id="loadButton" type="button" class="btn btn-outline-success">Load More</button>    
+                <ul id="episodeList"></ul> 
+                <button id="loadButton" type="button" class="btn btn-outline-success">Load More</button>
+                <img src="/assets/img/finger.png" alt="" class="moving-image">
             </div>
 <!---------------------------------------MAIN AREA---------------------------------------->
             <div class="col-md-10" id="mainArea">
@@ -36,13 +38,11 @@
                     <div id="stars"></div>
                     <div id="stars2"></div>
                     <div id="stars3"></div>
-                    <div id="stars4"></div>
+                    <div id="stars4"></div>   
                 </div>
                 <div class="container mt-3">
-                    <div id="mainCard">
-                    </div>   
-                    <div id="roW" class="row">
-                    </div>
+                    <div id="mainCard"></div>   
+                    <div id="roW" class="row"></div>
                 </div>
             </div>
         </div>
@@ -68,36 +68,9 @@
 <!--------------------------------------MODAL-------------------------------------------->
 <div class="modal" id="myModal">
     <div class="modal-overlay"></div>
-    <div id="modalContent" class="modal-content">
-        <!-- <span class="close" id="closeModalBtn">&times;</span> -->
-        <!-- <h5 id="modalCardName">Name</h5>
-        <p id="modalCardStatus">Status</p>
-        <p id="modalCardSpecie">Specie</p>
-        <p id="modalCardGender">Gender</p>
-        <ul id="modalCardOrigin">Origin:Place
-            
-        </ul> -->
-    </div>
+    <div id="modalContent" class="modal-content"></div>
 </div>
 
-    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                <h1 class="modal-title fs-5" id="exampleModalLabel"></h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                <p id="vamo"></p>
-                </div>
-                <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" id="commentLoader" class="btn btn-primary">Load Comments</button>
-                </div>
-            </div>
-        </div>
-    </div> -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>  
 </body>
 </html>

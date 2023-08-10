@@ -1,10 +1,14 @@
 * {
     cursor: url(/assets/img/cursor.png), auto;
+    font-family: 'Delicious Handrawn', cursive;
+    text-shadow: 0px 1px 10px rgba(95, 160, 186, 0.854);;
 }
 
-body{
-    height: 90vh;
-    ;
+.container-fluid{
+    background-image: url(/assets/img/main-background.png);
+    background-repeat:no-repeat;
+    background-attachment: fixed;
+    background-position: center;
 }
 
 #header{
@@ -13,40 +17,75 @@ body{
     left: 0;
 }
 
-/* #episodeList{
+.header-img{
+    max-height: 15vh;
+    justify-self: center;
+    z-index: -1;
+}
+
+.main-img-bg{
     position: fixed;
+    top: 20%;
+}
+
+.col-md-2{
+    display: flex;
+    flex-direction: column;
+}
+
+#episodeList{
     overflow-y: scroll;
     list-style: none;
-} */
+    text-align: center;   
+}
+
+#loadButton{
+    position: unset;
+    align-items: center;
+}
+
+.episode-list-title{
+    color:chartreuse;
+}
+
+.episode-list-title:hover{
+    color: rgb(86, 169, 3);
+    font-size: 1.05rem;
+}
 
 #episodeName, #episodeDate, #episodeCode{
     color: chartreuse;
-}
-
-#footer {
-    background-image: url(/assets/img/header-footer.jpg);
-    padding: 1%;
-    border: 2px solid red;
-    bottom: 0;
-    position: absolute;
+    text-align: center;
 }
 
 .bg-animation{
-    z-index: -1;
+    z-index: -2;
     background-color: black;
+}
+
+.card{
+    background: rgba(52, 50, 50, 0.403);
+    transition: all .3s ease;
+}
+
+.card:hover{
+    transform: translate3D(0,-1px,0) scale(1.03);
+    transition: all .4s ease;
+}
+
+.card-title, .card-text{
+    color:rgb(70, 195, 245);
+    text-align: center;
 }
 
 .modal {
     display: none;
     position: fixed;
     z-index: 0;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
+    justify-content: center;
+    align-items: center;
     background-color: rgba(0, 0, 0, 0.7);
     overflow: auto;
-    transition: opacity 0.3s;
 }
 .modal-overlay {
     position: absolute;
@@ -60,15 +99,82 @@ body{
 }
 
 .modal-content {
-    background-color: #fefefe;
+    background: rgb(0,0,0);
+    background: linear-gradient(146deg, rgba(0,0,0,1) 0%, rgba(32,124,1,1) 58%, rgba(0,97,31,1) 100%);
     margin: 20% auto;
     padding: 20px;
-    border: 1px solid #888;
-    width: 60%;
+    max-width: 50%;
+    max-height: 80%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    overflow-y: visible;
+    overflow-y: auto;
     z-index: 2;
+    text-align: center;
+    border: 1px solid black;
 }
+
+.modal-card-img{
+    width:fit-content;
+    height:fit-content;
+    align-self: center;
+    border-radius: 1rem;
+    border: 1px solid black;
+    margin-bottom: 1em;
+    -webkit-box-shadow: 0px 18px 42px -4px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 18px 42px -4px rgba(0,0,0,0.75);
+    box-shadow: 0px 18px 42px -4px rgba(0,0,0,0.75);
+}
+
+.modal-show {
+    animation: modalShowAnimation 0.5s forwards;
+}
+
+.modal-hide {
+    animation: modalHideAnimation 0.5s forwards;
+}
+
+@keyframes modalShowAnimation {
+    from {
+        transform: translateY(-100%);
+    }
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes modalHideAnimation {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+.modal-card-epi-list{
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.modal-card-epi-list-item{
+    color: chartreuse;
+    padding-inline-start: 0px;
+}
+
+.modal-card-epi-list-item:hover{
+    color: rgb(62, 111, 14);
+    font-size: 1.05rem;
+}
+
+#modalCardOrigin {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+#modalCardOrigin:hover{
+    color: chartreuse;
+    font-size: 1.05rem;
+}
+
 
 .close {
     color: #aaa;
@@ -81,4 +187,41 @@ body{
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+.resident-list {
+    list-style: none;
+    padding-inline-start: 0px;
+}
+
+.resident-list-item:hover{
+    color: rgb(62, 111, 14);
+    font-size: 1.05rem;
+}
+
+#footer {
+    background-image: url(/assets/img/header-footer.jpg);
+    padding: 1%;
+    border: 2px solid red;
+    bottom: 0;
+    position: absolute;
+}
+
+.moving-image {
+    position: absolute;
+    z-index: -1;
+    max-height: 15vh;
+    top: 50%;
+    transform: translateY(-50%);
+    animation: moveUpDown 15s ease-in-out infinite;
+}
+
+@keyframes moveUpDown {
+    0%, 100% {
+        transform: translateX(50%);
+        transform: translateY(500%)
+    }
+    50% {
+        transform: translateX(1000%);
+    }
 }

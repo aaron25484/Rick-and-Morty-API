@@ -41,5 +41,8 @@ function loadEpisodes() {
         page++;
         getEpisodes();
         init();
+        if (page > 3) {
+            loadEpisodesButton === null || loadEpisodesButton === void 0 ? void 0 : loadEpisodesButton.remove();
+        }
     });
 }
