@@ -33,10 +33,7 @@ const loadEpisodesButton = document.querySelector("#loadButton");
 loadEpisodesButton?.addEventListener('click', loadEpisodes)
 
 async function loadEpisodes(){
-    
     page++;
-    console.log(page)
     getEpisodes();
     init();
-    
 }

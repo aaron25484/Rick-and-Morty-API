@@ -31,7 +31,7 @@
             <button id="loadButton" type="button" class="btn btn-outline-success">Load More</button>    
             </div>
 <!---------------------------------------MAIN AREA---------------------------------------->
-            <div class="col-md-10" id="mainArea" style="background-color: black;">
+            <div class="col-md-10" id="mainArea">
                 <div class="bg-animation">
                     <div id="stars"></div>
                     <div id="stars2"></div>
@@ -47,7 +47,7 @@
             </div>
         </div>
     </div>
-<!--------------------------------------MODAL-------------------------------------------->
+<!--------------------------------------TEMPLATE CARD-------------------------------------------->
 
 <template id="template-card">
     <div id="displayMain">
@@ -65,8 +65,22 @@
         </div> 
     </div>
 </template>
+<!--------------------------------------MODAL-------------------------------------------->
+<div class="modal" id="myModal">
+    <div class="modal-overlay"></div>
+    <div id="modalContent" class="modal-content">
+        <!-- <span class="close" id="closeModalBtn">&times;</span> -->
+        <!-- <h5 id="modalCardName">Name</h5>
+        <p id="modalCardStatus">Status</p>
+        <p id="modalCardSpecie">Specie</p>
+        <p id="modalCardGender">Gender</p>
+        <ul id="modalCardOrigin">Origin:Place
+            
+        </ul> -->
+    </div>
+</div>
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <!-- <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
                 <div class="modal-header">
@@ -82,7 +96,8 @@
                 </div>
             </div>
         </div>
-    </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
+    </div> -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+    
 </body>
 </html>

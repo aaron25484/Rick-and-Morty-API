@@ -39,7 +39,6 @@ loadEpisodesButton === null || loadEpisodesButton === void 0 ? void 0 : loadEpis
 function loadEpisodes() {
     return __awaiter(this, void 0, void 0, function* () {
         page++;
-        console.log(page);
         getEpisodes();
         init();
     });
