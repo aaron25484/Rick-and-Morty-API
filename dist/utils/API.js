@@ -18,22 +18,6 @@ export function getEpisodes() {
         return data.results;
     });
 }
-const urlCharacters = `${url}/character`;
-export function getCharacters() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch(urlCharacters);
-        const data = yield response.json();
-        return data.results;
-    });
-}
-const urlLocations = `${url}/location`;
-export function getLocations() {
-    return __awaiter(this, void 0, void 0, function* () {
-        const response = yield fetch(urlLocations);
-        const data = yield response.json();
-        return data.results;
-    });
-}
 const loadEpisodesButton = document.querySelector("#loadButton");
 loadEpisodesButton === null || loadEpisodesButton === void 0 ? void 0 : loadEpisodesButton.addEventListener('click', loadEpisodes);
 function loadEpisodes() {
@@ -41,7 +25,7 @@ function loadEpisodes() {
         page++;
         getEpisodes();
         init();
-        if (page > 3) {
+        if (page > 2) {
             loadEpisodesButton === null || loadEpisodesButton === void 0 ? void 0 : loadEpisodesButton.remove();
         }
     });

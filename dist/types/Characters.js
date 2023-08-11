@@ -1,4 +1,3 @@
-"use strict";
 var CharacterStatus;
 (function (CharacterStatus) {
     CharacterStatus[CharacterStatus["Alive"] = 0] = "Alive";
@@ -12,3 +11,4 @@ var CharacterGender;
     CharacterGender[CharacterGender["Genderless"] = 2] = "Genderless";
     CharacterGender[CharacterGender["Unknown"] = 3] = "Unknown";
 })(CharacterGender || (CharacterGender = {}));
+export {};

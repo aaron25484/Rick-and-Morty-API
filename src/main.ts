@@ -1,4 +1,6 @@
-import { getEpisodes, getCharacters, urlEpisodes } from "./utils/API.js";
+import { getEpisodes } from "./utils/API.js";
+import { Episode } from "./types/Episodes.js";
+import { Location } from "./types/Locations.js";
 
 window.addEventListener("load", init);
 
@@ -79,7 +81,7 @@ async function showCharacters(episode: Episode){
 
 const modal = document.querySelector("#myModal") as HTMLDialogElement;
 
-function openModal(data: {status: string | null; name: string | null; species: string; gender: string; episode:string[] ; image:string; origin:Location}){
+function openModal(data: {status: string; name: string; species: string; gender: string; episode:string[]; image:string; origin:Location}){
     modal.style.display = "flex";
     modal.classList.add("modal-show");
     
@@ -100,7 +102,7 @@ function openModal(data: {status: string | null; name: string | null; species: s
     let modalCardGender = document.createElement("p");
     modalCardGender?.setAttribute("id","modalCardGender");
     modalCardGender!.textContent = "Gender:" + " " + data.gender;
-    let modalCardOrigin = document.createElement("ul");
+    let modalCardOrigin = document.createElement("p");
     modalCardOrigin?.setAttribute("id","modalCardOrigin");
     modalCardOrigin!.textContent = "Origin:" + " " + data.origin.name;
     let modalCardEpiList = document.createElement("ul");
@@ -151,28 +153,37 @@ function closeModal() {
         modal.classList.remove("modal-hide");
         let modalContent = document.querySelector("#modalContent");
         modalContent?.replaceChildren();
-    }, 500); 
+    }, 800); 
 }
 
 function showOrigin(data:{origin:Location}){
+    closeModal();
     const originCharacters = data.origin.url;
     fetch(originCharacters)
         .then (response => response.json())
         .then (location=>{            
-            let locationList = document.querySelector("#modalCardOrigin");
+            let locationList = document.querySelector("#mainCard");
             locationList?.replaceChildren();
-            locationList!.textContent = location.name;
-            let locationType = document.createElement("li");
-            locationType.textContent = location.type;
-            let locationDimension = document.createElement("li");
-            locationDimension.textContent = location.dimension;
-            let locationResidentsList = document.createElement("ul");
-            locationResidentsList.className = "resident-list";
-            locationResidentsList.textContent = "List of Residents:";
+            const locationName = document.createElement("h5");
+            locationName.setAttribute('id','locationName')
+            locationName!.textContent = "Origin:" + " " + location.name;
+            const locationType = document.createElement("h5");
+            locationType.setAttribute('id','locationType');
+            locationType.textContent = "Type:" + " " + location.type;
+            const locationDimension = document.createElement("h5");
+            locationDimension.setAttribute('id','locationDimension');
+            locationDimension.textContent = "Dimension:" + " " + location.dimension;
+            const locationResidentsList = document.createElement("h6");
+            locationResidentsList.setAttribute('id','locationResidents');
+            locationResidentsList.textContent = "List of Residents";
 
+            locationList!.appendChild(locationName);
             locationList!.appendChild(locationType);
             locationList!.appendChild(locationDimension);
-            locationList!.appendChild(locationResidentsList);
+            locationList?.appendChild(locationResidentsList);
+
+            const cardRow = document.querySelector("#roW");
+            cardRow?.replaceChildren();
             
             const locationResidents = location.residents;
             locationResidents.forEach((resident: RequestInfo | URL) =>{
@@ -181,13 +192,28 @@ function showOrigin(data:{origin:Location}){
                     async function printResident(){
                     const result = await fetchResident;
                     const data = await result.json();
-                    console.log(data);
-                    let locationResidentsListItem = document.createElement("li");
-                    locationResidentsListItem.className = "resident-list-item"
-                    locationResidentsListItem.textContent = data.name;
-                    locationResidentsList.appendChild(locationResidentsListItem);
+                    const cardScheme = document.createElement("div");
+                    cardScheme.className = "col-lg-2 col-md-3 col-sm-6";
+                    const mainCards = document.createElement("div");
+                    mainCards.replaceChildren()
+                    mainCards.className = "card card-block mb-3";
+                    let characterImg = document.createElement("img");
+                    characterImg.className ="card-img";
+                    characterImg!.src = data.image;
+                    const characterName = document.createElement("h5");
+                    characterName.className = "card-title mt-3 mb-3";
+                    characterName.textContent = data.name;
+                    const characterBody = document.createElement("p");
+                    characterBody.className = "card-text";
+                    characterBody!.textContent = data.status + " // " + data.species;
+                    
+                    cardRow?.appendChild(cardScheme);
+                    cardScheme?.appendChild(mainCards);
+                    mainCards?.appendChild(characterImg);
+                    mainCards?.appendChild(characterName);
+                    mainCards?.appendChild(characterBody);
 
-                    locationResidentsListItem.addEventListener('click',()=>{
+                    mainCards.addEventListener('click',()=>{
                         let modalContent = document.querySelector("#modalContent");
                         modalContent?.replaceChildren()
                         openModal(data);
